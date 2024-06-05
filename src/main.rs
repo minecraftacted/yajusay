@@ -14,11 +14,18 @@ fn main() {
     ´:::::.ヾ. 　　　￣´　　　　　　　　' `,ｼﾐﾞ
     :::::::::::::.`:ヽ､_　　　　　　　...:;'＿,ソ'ﾞ''
     ::::::::::::::::::::::::::｀:::::::::::::::-='";
-    let mut word:String;
+    let mut word:String ="".to_string();
     if env::args().len() == 1 {
         word = "イキスギィ".to_string();
     } else {
-        word = env::args().nth(1).unwrap();
+        for (index,element) in env::args().enumerate() {
+            if index!=0 {
+                word.push_str(&env::args().nth(index).unwrap());
+                if index != env::args().len()-1 {
+                    word.push_str(" ");
+                }
+            }
+        }
     }
     print!(" ");
     for char in word.chars() {
