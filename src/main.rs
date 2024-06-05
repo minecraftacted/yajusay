@@ -1,9 +1,10 @@
 use std::env;
 use unicode_width::UnicodeWidthChar;
 fn main() {
+    let _ = env::set_current_dir(env::current_exe().unwrap());
     let file = std::fs::read_to_string("./AA.txt");
-    let aa = match  file{
-        Ok (_) =>file.unwrap(),
+    let aa = match file {
+        Ok(_) => file.unwrap(),
         Err(_) => "　　　　　　　　　　　　　 ,,,z=~'ﾞ'+''ｯ彡ｯ,､
         　　　　　　　　　　　　,ｨ´ 　　　　　 \"':';:;ｯ;,
         　　　　　　　　 ,　' ﾞ´`ﾞﾐﾞｯ,　　　　　　　 \"',`,
@@ -16,17 +17,18 @@ fn main() {
         　ノ:!､　 ヽ｀`ｰ =;ｨ'　　　　　　　　,,ｼ:;彡;ｼﾞ
         ´:::::.ヾ. 　　　￣´　　　　　　　　' `,ｼﾐﾞ
         :::::::::::::.`:ヽ､_　　　　　　　...:;'＿,ソ'ﾞ''
-        ::::::::::::::::::::::::::｀:::::::::::::::-='".to_string(),
+        ::::::::::::::::::::::::::｀:::::::::::::::-='"
+            .to_string(),
     };
-    let mut word:String ="".to_string();
+    let mut word: String = "".to_string();
     if env::args().len() == 1 {
         word = "イキスギィ".to_string();
     } else {
-        for (index,_element) in env::args().enumerate() {
-            if index!=0 {
+        for (index, _element) in env::args().enumerate() {
+            if index != 0 {
                 word.push_str(&env::args().nth(index).unwrap());
-                if index != env::args().len()-1 {
-                    word.push_str(" ");
+                if index != env::args().len() - 1 {
+                    word.push(' ');
                 }
             }
         }
@@ -52,5 +54,5 @@ fn main() {
         print!("=");
     }
     println!(" ");
-    println!("{}",aa);
+    println!("{}", aa);
 }
